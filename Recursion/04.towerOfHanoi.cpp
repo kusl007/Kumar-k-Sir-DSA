@@ -12,7 +12,7 @@ void towerOfHanoi(int N, char Source_Rod, char Helper_Rod, char Destination_Rod)
     towerOfHanoi(N - 1, Helper_Rod, Source_Rod, Destination_Rod); // STEP - 3
 }
 int main(){
-    int n=3;
+    int n=4;
     
      towerOfHanoi(n, 'A', 'B', 'C');
 }
