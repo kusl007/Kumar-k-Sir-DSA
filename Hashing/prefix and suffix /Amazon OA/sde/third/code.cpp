@@ -1,31 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
- 
-int main() {
-    ll n;
-    cin>>n;
-    ll k;cin>>k;
-    ll b[n];
-    for(ll i=0;i<n;i++){
-        cin>>b[i];
-    }ll count = 0 ;
- 
- 
-    sort(b,b+n);
-    for (int i = 0, j = n-1; i<n; i++) {
+
+ll n;
+ll b[100000];
+
+ll calculate(ll k) {
+    ll count = 0;
+    for (int i = 0, j = n - 1; i < n; i++) {
         ll d = b[j] + b[i]; //[i............j]
-        while (d>k && i!=j){
+        while (d > k && i != j) {
             j--;
             d = b[j] + b[i];
- 
         }
-        if(i==j){break;
+        if (i == j) {
+            break;
         }
-        cout<<i<<" "<<j;
-        cout<<"\n";
         count += (j - i);
     }
-    cout<<(count);
+    return count;
+}
+
+int main() {
+    cin >> n;
+    for (ll i = 0; i < n; i++) {
+        cin >> b[i];
+    }
+
+    ll l, r;
+    cin >> l >> r;
+    sort(b, b + n);
+    cout << calculate(r) - calculate(l - 1);
+
     return 0;
-}//RRRRR
+}
